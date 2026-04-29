@@ -1,0 +1,2 @@
+source /home/phuonglod/esp/AICamRobot/build/bootloader/gdbinit/symbols
+source /home/phuonglod/esp/AICamRobot/build/bootloader/gdbinit/connect

@@ -1,0 +1,91 @@
+{
+  "project": "AICamRobot",
+  "target": "ESP32-S3-WROOM-CAM",
+  "framework": "ESP-IDF >= 5.5",
+  "skills": [
+    {
+      "id": "environment-setup",
+      "title": "Environment Setup",
+      "description": "Install ESP-IDF, source the toolchain, verify dependencies",
+      "path": "skills/environment-setup/SKILL.md",
+      "tags": ["setup", "toolchain", "idf"]
+    },
+    {
+      "id": "build-flash",
+      "title": "Build & Flash",
+      "description": "Build the firmware with idf.py, flash via deploy.sh or esptool",
+      "path": "skills/build-flash/SKILL.md",
+      "tags": ["build", "flash", "monitor", "deploy"]
+    },
+    {
+      "id": "menuconfig",
+      "title": "Menuconfig",
+      "description": "Configure WiFi, camera module, AI model parameters via idf.py menuconfig",
+      "path": "skills/menuconfig/SKILL.md",
+      "tags": ["config", "wifi", "camera", "sdkconfig"]
+    },
+    {
+      "id": "architecture",
+      "title": "System Architecture",
+      "description": "Full pipeline: Camera → AI → HTTP streamer, FreeRTOS queue wiring",
+      "path": "skills/architecture/SKILL.md",
+      "tags": ["architecture", "pipeline", "freertos", "queues"]
+    },
+    {
+      "id": "camera",
+      "title": "Camera Driver",
+      "description": "Camera init, frame capture task, pixel formats, frame sizes",
+      "path": "skills/camera/SKILL.md",
+      "tags": ["camera", "driver", "frames", "psram"]
+    },
+    {
+      "id": "ai-detection",
+      "title": "AI Detection Modules",
+      "description": "Face, motion, color, cat-face detection — FreeRTOS task patterns",
+      "path": "skills/ai-detection/SKILL.md",
+      "tags": ["ai", "detection", "esp-dl", "inference"]
+    },
+    {
+      "id": "face-recognition",
+      "title": "Face Recognition",
+      "description": "Face enrollment, flash storage via fr partition, recognition model selection",
+      "path": "skills/face-recognition/SKILL.md",
+      "tags": ["face", "recognition", "enrollment", "partition"]
+    },
+    {
+      "id": "web-streaming",
+      "title": "Web Streaming & REST API",
+      "description": "MJPEG stream (port 81), control REST API (port 80), embedded HTML UIs",
+      "path": "skills/web-streaming/SKILL.md",
+      "tags": ["http", "stream", "mjpeg", "rest", "api"]
+    },
+    {
+      "id": "wifi-network",
+      "title": "WiFi & mDNS",
+      "description": "Dual-mode WiFi (STA + AP), mDNS service advertisement, camera discovery",
+      "path": "skills/wifi-network/SKILL.md",
+      "tags": ["wifi", "ap", "sta", "mdns", "network"]
+    },
+    {
+      "id": "lcd-display",
+      "title": "LCD Display",
+      "description": "Optional LCD output via BSP, wallpaper, frame rendering task",
+      "path": "skills/lcd-display/SKILL.md",
+      "tags": ["lcd", "display", "bsp", "graphics"]
+    },
+    {
+      "id": "qr-scanner",
+      "title": "QR / Barcode Scanner",
+      "description": "esp-code-scanner prebuilt lib, Code39/Code128/QR decode API",
+      "path": "skills/qr-scanner/SKILL.md",
+      "tags": ["qr", "barcode", "scanner", "code39", "code128"]
+    },
+    {
+      "id": "hardware-pins",
+      "title": "Hardware Pin Mapping",
+      "description": "Pin definitions for ESP32-S3-WROOM-CAM and all supported camera modules",
+      "path": "skills/hardware-pins/SKILL.md",
+      "tags": ["pins", "gpio", "hardware", "camera-module"]
+    }
+  ]
+}
