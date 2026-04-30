@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <vector>
 #include "dl_detect_define.hpp"
 #include "esp_camera.h"
 
@@ -41,5 +42,10 @@ void print_detection_result(std::list<dl::detect::result_t> &results);
  */
 void *app_camera_decode(camera_fb_t *fb);
 
-void update_detection_json(std::list<dl::detect::result_t> &results);
+// Pass frame to enable pixel-based mouth MAR (PIXFORMAT_RGB565 only).
+// Pass true_mars to include CNN-based true MAR (Phase 2b); one float per face,
+// negative values indicate no result. Falls back gracefully when nullptr.
+void update_detection_json(std::list<dl::detect::result_t> &results,
+                           camera_fb_t *frame = nullptr,
+                           const std::vector<float> *true_mars = nullptr);
 void get_detection_json(char *buf, size_t len);

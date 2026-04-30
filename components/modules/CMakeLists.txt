@@ -1,7 +1,12 @@
 set(embed_files "web/www/index_ov2640.html.gz"
                 "web/www/index_ov3660.html.gz"
                 "web/www/index_ov5640.html.gz"
-                "web/www/monitor.html.gz")
+                "web/www/monitor.html.gz"
+                "web/www/bootstrap.min.css.gz"
+                "web/www/bootstrap.bundle.min.js.gz"
+                "web/www/bootstrap-icons.min.css.gz"
+                "web/www/bootstrap-icons.woff2"
+                "web/www/chart.umd.js.gz")
 
 set(src_dirs    ai
                 camera
@@ -22,7 +27,7 @@ set(requires    esp-dl
                 esp_wifi
                 fb_gfx
                 esp_driver_tsens
-                spi_flash)
+                app_update)
 
 idf_component_register(SRC_DIRS ${src_dirs} INCLUDE_DIRS ${include_dirs} REQUIRES ${requires} EMBED_FILES ${embed_files})
 

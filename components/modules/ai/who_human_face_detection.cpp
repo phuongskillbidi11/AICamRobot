@@ -8,6 +8,7 @@
 #include "human_face_detect_mnp01.hpp"
 
 #include "who_ai_utils.hpp"
+#include "who_lip_landmark.hpp"
 
 #define TWO_STAGE_ON 1
 
@@ -28,6 +29,7 @@ static void task_process_handler(void *arg)
 #if TWO_STAGE_ON
     HumanFaceDetectMNP01 detector2(0.4F, 0.3F, 10);
 #endif
+    LipLandmark6Pt lip_model;
 
     while (true)
     {
@@ -43,7 +45,11 @@ static void task_process_handler(void *arg)
                 std::list<dl::detect::result_t> &detect_results = detector.infer((uint16_t *)frame->buf, {(int)frame->height, (int)frame->width, 3});
 #endif
 
-                update_detection_json(detect_results);
+                std::vector<float> true_mars;
+                for (auto &r : detect_results)
+                    true_mars.push_back(lip_model.infer(frame, r));
+
+                update_detection_json(detect_results, frame, &true_mars);
                 if (detect_results.size() > 0)
                 {
                     draw_detection_result((uint16_t *)frame->buf, frame->height, frame->width, detect_results);
@@ -93,7 +99,7 @@ void register_human_face_detection(const QueueHandle_t frame_i,
     xQueueResult = result;
     gReturnFB = camera_fb_return;
 
-    xTaskCreatePinnedToCore(task_process_handler, TAG, 4 * 1024, NULL, 5, NULL, 0);
+    xTaskCreatePinnedToCore(task_process_handler, TAG, 8 * 1024, NULL, 5, NULL, 0);
     if (xQueueEvent)
         xTaskCreatePinnedToCore(task_event_handler, TAG, 4 * 1024, NULL, 5, NULL, 1);
 }
