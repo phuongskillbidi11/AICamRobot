@@ -2,6 +2,11 @@ build/
 *.bin
 *.elf
 *.map
-*.a
+*.log
+sdkconfig
+sdkconfig.old
+__pycache__/
+*.pyc
 *.o
-*.obj
+*.a
+.DS_Store
